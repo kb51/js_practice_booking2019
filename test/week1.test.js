@@ -23,7 +23,7 @@ describe("capitalize", () => {
   });
 });
 
-describe.only("generateInitials", () => {
+describe("generateInitials", () => {
   test("returns the initials of a firstname and surname", () => {
     expect(generateInitials("Frederic", "Bonneville")).toBe("F.B");
   });

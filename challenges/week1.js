@@ -6,13 +6,13 @@ function capitalize(word) {
 function generateInitials(firstName, lastName) {
   if (firstName === undefined) throw new Error("firstName is required");
   if (lastName === undefined) throw new Error("lastName is required");
-  return `${firstName[0] + '.' + lastName[0]}`;
+  return `${firstName.slice(0, 1)}.${lastName.slice(0, 1)}`;
 }
 
 function addVAT(originalPrice, vatRate) {
   if (originalPrice === undefined) throw new Error("originalPrice is requied");
   if (vatRate === undefined) throw new Error("vatRate is required");
-  // Add your code here!
+  return originalPrice / 100 * vatRate;
 }
 
 function getSalePrice(originalPrice, reduction) {
