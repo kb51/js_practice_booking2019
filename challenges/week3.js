@@ -17,13 +17,8 @@ function camelCaseWords(words) {
 function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
   //return people.map(person => person.subjects).flat().length;
-  let temp = [];
-  people.forEach(person => {
-    person.subjects.forEach(subject => {
-      temp.push(subject);
-    })
-  })
-return temp.length;
+  return people.reduce((pv, val) => pv.concat(val.subjects), []).length;
+
 }
 
 function checkIngredients(menu, ingredient) {
