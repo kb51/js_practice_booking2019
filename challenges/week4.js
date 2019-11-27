@@ -6,10 +6,6 @@ function findSmallNums(nums) {
 function findNamesBeginningWith(names, char) {
   if (!names) throw new Error("names is required");
   if (!char) throw new Error("char is required");
-  // let newNames = [];
-  // if (char === names[0].slice(0,1)) {
-  //   newNames.push(names)
-  // }
   return names.filter(name => name[0].slice(0,1) === char)
 }
 
