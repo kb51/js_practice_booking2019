@@ -1,10 +1,10 @@
 const findNextNumber = (nums, n) => {
   if (nums === undefined) throw new Error("nums is required");
   if (n === undefined) throw new Error("n is required");
-  
+
   for (let i = 0; i < nums.length - 1; i++) {
     if (nums[i] === n) {
-      return nums[i+1];
+      return nums[i + 1];
     }
   }
 
@@ -14,7 +14,20 @@ const findNextNumber = (nums, n) => {
 
 const count1sand0s = str => {
   if (str === undefined) throw new Error("str is required");
-  // Your code here!
+
+  const numArr = str.split('');
+  let count1 = 0;
+  let count0 = 0;
+
+  for (let i = 0; i <= numArr.length; i++) {
+    if (numArr[i] === '1') {
+      count1++
+    } else if (numArr[i] === '0') {
+      count0++
+    }
+  }
+  return { 1: count1, 0: count0 }
+
 };
 
 const reverseNumber = n => {
