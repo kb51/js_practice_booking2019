@@ -38,8 +38,7 @@ const reverseNumber = n => {
 
 const sumArrays = arrs => {
   if (arrs === undefined) throw new Error("arrs is required");
-  let sums = arrs.map(arr => arr.reduce((a, b) => a + b));
-  return sums.reduce((a, b) => a + b)
+  return (arrs.map(arr => arr.reduce((a, b) => a + b))).reduce((a, b) => a + b);
 };
 
 const arrShift = arr => {
