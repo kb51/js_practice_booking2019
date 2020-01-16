@@ -21,6 +21,23 @@ describe("sumMultiples", () => {
 
 });
 
+describe.only("isValidDNA", () => {
+  test("This function will receive a string of characters and should return true/false depending on whether it is a valid DNA string. A valid DNA string may contain characters C, G, T or A only.", () => {
+    expect(isValidDNA('CGTA')).toBe(true);
+    expect(isValidDNA('BBCA')).toBe(false);
+    expect(isValidDNA('TACG')).toBe(true);
+  });
 
+  test("Still returns true/false regardless of casing", () => {
+    expect(isValidDNA('tagc')).toBe(true);
+    expect(isValidDNA('lrfd')).toBe(false);
+    expect(isValidDNA('gcat')).toBe(true);
+  });
 
+  test("Still returns false if the string contains more than or less than 4 letters", () => {
+    expect(isValidDNA('ta')).toBe(false);
+    expect(isValidDNA('tagc')).toBe(true);
+    expect(isValidDNA('gctaat')).toBe(false);
+  });
 
+});

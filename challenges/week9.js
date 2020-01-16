@@ -16,7 +16,13 @@ const sumMultiples = arr => {
  */
 const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
-};
+  const arr = str.toLowerCase().split('');
+  return arr.length === 4 &&
+      arr.indexOf('t') !== -1 
+      && arr.indexOf('a') !== -1
+      && arr.indexOf('g') !== -1
+      && arr.indexOf('c') !== -1
+  };
 
 /**
  * This function will receive a valid DNA string (see above) and should return a string of the complementary base pairs. In DNA, T always pairs with A, and C always pairs with G. So a string of "ACTG" would have a complementary DNA string of "TGAC".
