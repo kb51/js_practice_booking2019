@@ -21,7 +21,7 @@ describe("sumMultiples", () => {
 
 });
 
-describe.only("isValidDNA", () => {
+describe("isValidDNA", () => {
   test("This function will receive a string of characters and should return true/false depending on whether it is a valid DNA string. A valid DNA string may contain characters C, G, T or A only.", () => {
     expect(isValidDNA('CGTA')).toBe(true);
     expect(isValidDNA('BBCA')).toBe(false);
@@ -38,6 +38,27 @@ describe.only("isValidDNA", () => {
     expect(isValidDNA('ta')).toBe(false);
     expect(isValidDNA('tagc')).toBe(true);
     expect(isValidDNA('gctaat')).toBe(false);
+  });
+
+});
+
+describe.only("getComplementaryDNA", () => {
+  test("This function will receive a valid DNA string and should return a string of the complementary base pairs. In DNA, T always pairs with A, and C always pairs with G.", () => {
+    expect(getComplementaryDNA('CGTA')).toBe('GCAT');
+    expect(getComplementaryDNA('TAGC')).toBe('ATCG');
+    expect(getComplementaryDNA('TACG')).toBe('ATGC');
+  });
+
+  test("Still returns complementary base pair regardless of casing", () => {
+    expect(getComplementaryDNA('cgta')).toBe('GCAT');
+    expect(getComplementaryDNA('tagc')).toBe('ATCG');
+    expect(getComplementaryDNA('tACg')).toBe('ATGC');
+  });
+
+  test("Returns to say DNA is not valid if invalid string is passed in", () => {
+    expect(getComplementaryDNA('hello')).toBe('Invalid DNA');
+    expect(getComplementaryDNA('blue')).toBe('Invalid DNA');
+    expect(getComplementaryDNA('TGGH')).toBe('Invalid DNA');
   });
 
 });

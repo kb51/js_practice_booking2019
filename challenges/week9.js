@@ -6,8 +6,8 @@
  */
 const sumMultiples = arr => {
   if (arr === undefined) throw new Error("arr is required");
-   return arr.filter(num => num % 3 === 0 || num % 5 === 0).reduce((a, b) => a + b, 0)
-  };
+  return arr.filter(num => num % 3 === 0 || num % 5 === 0).reduce((a, b) => a + b, 0)
+};
 
 /**
  * This function will receive a string of characters and should return true/false depending on whether it is a valid DNA string. A valid DNA string may contain characters C, G, T or A only.
@@ -18,11 +18,11 @@ const isValidDNA = str => {
   if (str === undefined) throw new Error("str is required");
   const arr = str.toLowerCase().split('');
   return arr.length === 4 &&
-      arr.indexOf('t') !== -1 
-      && arr.indexOf('a') !== -1
-      && arr.indexOf('g') !== -1
-      && arr.indexOf('c') !== -1
-  };
+    arr.indexOf('t') !== -1
+    && arr.indexOf('a') !== -1
+    && arr.indexOf('g') !== -1
+    && arr.indexOf('c') !== -1
+};
 
 /**
  * This function will receive a valid DNA string (see above) and should return a string of the complementary base pairs. In DNA, T always pairs with A, and C always pairs with G. So a string of "ACTG" would have a complementary DNA string of "TGAC".
@@ -31,6 +31,16 @@ const isValidDNA = str => {
  */
 const getComplementaryDNA = str => {
   if (str === undefined) throw new Error("str is required");
+  if (!isValidDNA(str)) {
+    return 'Invalid DNA'
+  }
+  const split = str.toUpperCase().split('');
+  return split.map(char => {
+    if (char === 'A') return 'T';
+    if (char === 'T') return 'A';
+    if (char === 'C') return 'G';
+    if (char === 'G') return 'C';    
+  }).join('')
 };
 
 /**
