@@ -74,7 +74,7 @@ describe("isItPrime", () => {
 });
 
 describe.only("createMatrix", () => {
-  test("This function should receive a number and return an array of n arrays, each filled with n items."
+  test("This function should receive a string and return an array of n arrays, each filled with n items."
   , () => {
     expect(createMatrix(3, "foo")).toEqual(
        [
@@ -89,11 +89,30 @@ describe.only("createMatrix", () => {
         ["dog", "dog"]
       ]
     );
-    expect(createMatrix(1, 7)).toEqual(
+  });
+
+  test("This function should receive a number and return an array of n arrays, each filled with n items."
+  , () => {
+    expect(createMatrix(1, 7)).toEqual([[7]]);
+    expect(createMatrix(3, 4)).toEqual([[4, 4, 4], [4, 4, 4], [4, 4, 4]]);
+  });
+
+  test("This function should receive a array and return an array of n arrays, each filled with n items."
+  , () => {
+    expect(createMatrix(3, [34, 'hello'])).toEqual(
       [
-        [7]
+        [[34, 'hello'], [34, 'hello'], [34, 'hello']],
+        [[34, 'hello'], [34, 'hello'], [34, 'hello']],
+        [[34, 'hello'], [34, 'hello'], [34, 'hello']],
+      ]
+    );
+    expect(createMatrix(2, [true, 'yes', 1])).toEqual(
+      [
+        [[true, 'yes', 1], [true, 'yes', 1]],
+        [[true, 'yes', 1], [true, 'yes', 1]]
+
       ]
     );
   });
-
 });
+
