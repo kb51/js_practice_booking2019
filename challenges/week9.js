@@ -50,6 +50,13 @@ const getComplementaryDNA = str => {
  */
 const isItPrime = n => {
   if (n === undefined) throw new Error("n is required");
+  const divisors = [];
+  for (let i = 0; i <= n; i++) {
+    if (n % i === 0) {
+      divisors.push(i)
+    }
+  }
+  return divisors.length === 2;
 };
 
 /**

@@ -42,7 +42,7 @@ describe("isValidDNA", () => {
 
 });
 
-describe.only("getComplementaryDNA", () => {
+describe("getComplementaryDNA", () => {
   test("This function will receive a valid DNA string and should return a string of the complementary base pairs. In DNA, T always pairs with A, and C always pairs with G.", () => {
     expect(getComplementaryDNA('CGTA')).toBe('GCAT');
     expect(getComplementaryDNA('TAGC')).toBe('ATCG');
@@ -59,6 +59,16 @@ describe.only("getComplementaryDNA", () => {
     expect(getComplementaryDNA('hello')).toBe('Invalid DNA');
     expect(getComplementaryDNA('blue')).toBe('Invalid DNA');
     expect(getComplementaryDNA('TGGH')).toBe('Invalid DNA');
+  });
+
+});
+
+describe.only("isItPrime", () => {
+  test("This function should receive a number and return true/false depending on whether it is a prime number or not."
+  , () => {
+    expect(isItPrime(7)).toBe(true);
+    expect(isItPrime(8)).toBe(false);
+    expect(isItPrime(11)).toBe(true);
   });
 
 });
