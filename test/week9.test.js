@@ -73,7 +73,7 @@ describe("isItPrime", () => {
 
 });
 
-describe.only("createMatrix", () => {
+describe("createMatrix", () => {
   test("This function should receive a string and return an array of n arrays, each filled with n items."
   , () => {
     expect(createMatrix(3, "foo")).toEqual(
@@ -116,3 +116,23 @@ describe.only("createMatrix", () => {
   });
 });
 
+describe.only("areWeCovered", () => {
+  const staff = [
+    { name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
+    { name: "Pedro", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
+    { name: "Sheila", rota: ["Sunday", "Tuesday", "Friday"] },
+    { name: "John", rota: ["Saturday", "Sunday", "Thursday", "Wednesday"] },
+  ]
+  test("returns true if at least 3 staff members are in on a given day"
+  , () => {
+    expect(areWeCovered(staff, 'Tuesday')).toBe(true);
+    expect(areWeCovered(staff, 'Sunday')).toBe(true);
+  });
+
+  test("returns false if there are less than 3 staff members on a given day"
+  , () => {
+    expect(areWeCovered(staff, 'Thursday')).toBe(false);
+    expect(areWeCovered(staff, 'Monday')).toBe(false);
+  });
+
+});

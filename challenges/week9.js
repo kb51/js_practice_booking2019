@@ -99,6 +99,7 @@ const createMatrix = (n, fill) => {
 const areWeCovered = (staff, day) => {
   if (staff === undefined) throw new Error("staff is required");
   if (day === undefined) throw new Error("day is required");
+  return staff.filter(employee => employee.rota.includes(day)).length >= 3;
 };
 
 module.exports = {
