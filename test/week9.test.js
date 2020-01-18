@@ -63,12 +63,37 @@ describe("getComplementaryDNA", () => {
 
 });
 
-describe.only("isItPrime", () => {
+describe("isItPrime", () => {
   test("This function should receive a number and return true/false depending on whether it is a prime number or not."
   , () => {
     expect(isItPrime(7)).toBe(true);
     expect(isItPrime(8)).toBe(false);
     expect(isItPrime(11)).toBe(true);
+  });
+
+});
+
+describe.only("createMatrix", () => {
+  test("This function should receive a number and return an array of n arrays, each filled with n items."
+  , () => {
+    expect(createMatrix(3, "foo")).toEqual(
+       [
+         ["foo", "foo", "foo"],
+         ["foo", "foo", "foo"],
+         ["foo", "foo", "foo"]
+       ]
+    );
+    expect(createMatrix(2, "dog")).toEqual(
+      [
+        ["dog", "dog"],
+        ["dog", "dog"]
+      ]
+    );
+    expect(createMatrix(1, 7)).toEqual(
+      [
+        [7]
+      ]
+    );
   });
 
 });
