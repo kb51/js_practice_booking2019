@@ -21,9 +21,9 @@ describe("sumMultiples", () => {
 
 });
 
-describe("isValidDNA", () => {
+describe.only("isValidDNA", () => {
   test("This function will receive a string of characters and should return true/false depending on whether it is a valid DNA string. A valid DNA string may contain characters C, G, T or A only.", () => {
-    expect(isValidDNA('CGTA')).toBe(true);
+    expect(isValidDNA('AAAA')).toBe(true);
     expect(isValidDNA('BBCA')).toBe(false);
     expect(isValidDNA('TACG')).toBe(true);
   });
@@ -116,7 +116,7 @@ describe("createMatrix", () => {
   });
 });
 
-describe.only("areWeCovered", () => {
+describe("areWeCovered", () => {
   const staff = [
     { name: "Sally", rota: ["Monday", "Tuesday", "Friday"] },
     { name: "Pedro", rota: ["Saturday", "Sunday", "Tuesday", "Wednesday"] },
