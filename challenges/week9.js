@@ -20,12 +20,11 @@ const isValidDNA = str => {
   let count = 0;
 
   dna.forEach(val => {
-    if (['a', 'c', 'g', 't'].includes(val)) {
+    if (['a', 'g', 'c', 't'].includes(val)) {
       count++
     }
   })
-
-  return count === 4;
+return count === 4;
  };
 
 /**
