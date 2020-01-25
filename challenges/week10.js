@@ -21,8 +21,8 @@ const createRange = (start, end, step = 1) => {
   const range = [];
   for (let i = start; i <= end; i += step) {
     range.push(i)
-}
-return range;
+  }
+  return range;
 };
 
 /**
@@ -57,6 +57,10 @@ return range;
 const getScreentimeAlertList = (users, date) => {
   if (users === undefined) throw new Error("users is required");
   if (date === undefined) throw new Error("date is required");
+  const result = users.filter(user => {
+    return user.screenTime.some(st => st.date === date && (Object.values(st.usage).reduce((pv, val) => pv + val, 0) >= 60))
+  })
+  return result.map(usr => usr.username)
 };
 
 /**
