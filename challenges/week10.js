@@ -75,7 +75,7 @@ const getScreentimeAlertList = (users, date) => {
  */
 
 const convert3to6 = hexStr => {
-   return hexStr = hexStr[0] + hexStr[0] + hexStr[1] + hexStr[1] + hexStr[2] + hexStr[2];
+  return hexStr = hexStr[0] + hexStr[0] + hexStr[1] + hexStr[1] + hexStr[2] + hexStr[2];
 }
 
 const hexToRGB = hexStr => {
@@ -106,6 +106,34 @@ const hexToRGB = hexStr => {
  */
 const findWinner = board => {
   if (board === undefined) throw new Error("board is required");
+
+  const checkRows = player => {
+    return board.some(arr => {
+      return arr.every(i => i === player)
+    })
+  }
+
+  const checkColumns = player => {
+    return board.some((_, index) => {
+      return board.every(i => i[index] === player)
+    })
+  }
+
+  const checkDiagonal = player => {
+    return [
+      [board[0][0], board[1][1], board[2][2]],
+      [board[0][2], board[1][1], board[2][0]]
+    ].some(arr => arr.every(i => i === player))
+  }
+
+  const checkAllCombinations = player => {
+    return checkRows(player) || checkColumns(player) || checkDiagonal(player);
+  }
+
+  let winner = null;
+  if (checkAllCombinations('X')) winner = 'X';
+  if (checkAllCombinations('0')) winner = '0'
+  return winner;
 };
 
 module.exports = {

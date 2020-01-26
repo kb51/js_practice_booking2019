@@ -69,7 +69,7 @@ describe("getScreentimeAlertList", () => {
 
 });
 
-describe.only("hexToRGB", () => {
+describe("hexToRGB", () => {
   test("returns RGB code of given Hex code", () => {
     expect(hexToRGB('#000000')).toBe('rgb(0,0,0)');
     expect(hexToRGB('#C0C0C0')).toBe('rgb(192,192,192)');
@@ -82,4 +82,58 @@ describe.only("hexToRGB", () => {
     expect(hexToRGB('#FCC')).toBe('rgb(255,204,204)');
   });
 
+});
+
+describe.only("findWinner", () => {
+  test("returns X or 0 for winner in a column", () => {
+    expect(findWinner([
+      ["X", "0", null],
+      ["X", null, "0"],
+      ["X", null, "0"]
+     ])).toEqual('X');
+    expect(findWinner([
+      ["X", "0", null],
+      ["X", "0", "X"],
+      [null, "0", "0"]
+     ])).toEqual('0');
+  });
+
+  test("returns X or 0 for winner in a row", () => {
+    expect(findWinner([
+      ["0", "0", "0"],
+      ["X", null, "0"],
+      ["X", null, "X"]
+     ])).toEqual('0');
+    expect(findWinner([
+      ["X", "0", null],
+      ["X", "X", "X"],
+      [null, "0", "0"]
+     ])).toEqual('X');
+  });
+
+  test("returns X or 0 for winner in a diagnal", () => {
+    expect(findWinner([
+      ["X", "0", null],
+      ["0", "X", "0"],
+      [null, null, "X"]
+     ])).toEqual('X');
+    expect(findWinner([
+      ["X", "X", "0"],
+      ["X", "0", "X"],
+      ["0", "X", "0"]
+     ])).toEqual('0');
+  });
+
+  test("returns null if there is no current winner", () => {
+    expect(findWinner([
+      ["X", "0", null],
+      [null, null, "0"],
+      ["X", null, "0"]
+     ])).toEqual(null);
+    expect(findWinner([
+      [null, null, null],
+      [null, null, null],
+      [null, null, null]
+     ])).toEqual(null);
+  });
 });
