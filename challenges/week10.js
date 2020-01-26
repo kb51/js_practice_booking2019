@@ -73,8 +73,25 @@ const getScreentimeAlertList = (users, date) => {
  * Hint: You will need to convert each hexadecimal value for R, G and B into its decimal equivalent!
  * @param {String} str
  */
+
+const convert3to6 = hexStr => {
+   return hexStr = hexStr[0] + hexStr[0] + hexStr[1] + hexStr[1] + hexStr[2] + hexStr[2];
+}
+
 const hexToRGB = hexStr => {
   if (hexStr === undefined) throw new Error("hexStr is required");
+  if (![4, 7].includes(hexStr.length)) throw new Error("the required length of hexStr is 3 or 6");
+  const rgb = [];
+  hexStr = hexStr.slice(1)
+  if (hexStr.length === 3) {
+    hexStr = convert3to6(hexStr)
+  }
+
+  rgb.push(parseInt(hexStr.slice(0, 2), 16));
+  rgb.push(parseInt(hexStr.slice(2, 4), 16));
+  rgb.push(parseInt(hexStr.slice(4, 6), 16));
+
+  return `rgb(${rgb.join(',')})`;
 };
 
 /**

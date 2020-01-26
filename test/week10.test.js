@@ -27,7 +27,7 @@ describe("createRange", () => {
 
 });
 
-describe.only("getScreentimeAlertList", () => {
+describe("getScreentimeAlertList", () => {
   const users = [
     { username: "kb123", 
     name: "Karren Brady", 
@@ -65,6 +65,21 @@ describe.only("getScreentimeAlertList", () => {
     expect(getScreentimeAlertList(users, "2019-05-02")).toEqual(['shel01']);
     expect(getScreentimeAlertList(users, "2019-05-03")).toEqual(['wak', 'pepsi']);
     expect(getScreentimeAlertList(users, "2019-05-04")).toEqual(['kb123', 'shel01']);
+  });
+
+});
+
+describe.only("hexToRGB", () => {
+  test("returns RGB code of given Hex code", () => {
+    expect(hexToRGB('#000000')).toBe('rgb(0,0,0)');
+    expect(hexToRGB('#C0C0C0')).toBe('rgb(192,192,192)');
+    expect(hexToRGB('#808000')).toBe('rgb(128,128,0)');
+  });
+
+  test("returns RGB code of Hex codes with a length of 3", () => {
+    expect(hexToRGB('#000')).toBe('rgb(0,0,0)');
+    expect(hexToRGB('#FFF')).toBe('rgb(255,255,255)');
+    expect(hexToRGB('#FCC')).toBe('rgb(255,204,204)');
   });
 
 });
